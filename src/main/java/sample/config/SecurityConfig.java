@@ -17,9 +17,11 @@
 package sample.config;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -47,9 +49,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.authorizeRequests((authorizeRequests) ->
 				authorizeRequests
 					.mvcMatchers("/", "/public/**").permitAll()
+					//.mvcMatchers("/test").anonymous()
 					.anyRequest().authenticated()
 			)
-			.formLogin(withDefaults())
+			//.formLogin(withDefaults())
 			.oauth2Client(withDefaults())
 			.oauth2Login(oauth2->oauth2.userInfoEndpoint(userInfo->userInfo.userService(this.oauth2UserService()))
 			);

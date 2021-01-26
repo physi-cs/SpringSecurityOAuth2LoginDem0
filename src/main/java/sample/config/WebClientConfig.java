@@ -43,7 +43,7 @@ public class WebClientConfig {
 				new ServletOAuth2AuthorizedClientExchangeFilterFunction(authorizedClientManager);
 		oauth2.setDefaultOAuth2AuthorizedClient(true);
 		return WebClient.builder()
-				.baseUrl(this.resourceUri)
+				//.baseUrl(this.resourceUri)
 				.apply(oauth2.oauth2Configuration())
 				.build();
 	}

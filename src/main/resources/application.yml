@@ -55,4 +55,4 @@ spring:
 #            user-info-authentication-method: header
 #            user-name-attribute: name
 
-resource-uri: http://localhost:8080/test
+resource-uri: http://localhost:8080/
