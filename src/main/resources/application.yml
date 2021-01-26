@@ -45,9 +45,10 @@ spring:
           maxkey:
             authorization-uri: ${oauth2.server.host}/maxkey/oauth/v20/authorize
             token-uri: ${oauth2.server.host}/maxkey/oauth/v20/token
-            user-info-uri: ${oauth2.server.host}/maxkey/api/connect/v10/userinfo
+#            user-info-uri: ${oauth2.server.host}/maxkey/api/connect/v10/userinfo
+            user-info-uri: ${oauth2.server.host}/maxkey/api/oauth/v20/me
             user-info-authentication-method: header
-            user-name-attribute: name
+            user-name-attribute: realname
 #            authorization-uri: https://onekey-test.zhejianglab.com/maxkey/oauth/v20/authorize
 #            token-uri: https://onekey-test.zhejianglab.com/maxkey/oauth/v20/token
 #            user-info-uri: https://onekey-test.zhejianglab.com/maxkey/api/connect/v10/userinfo
