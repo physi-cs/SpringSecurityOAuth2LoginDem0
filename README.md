@@ -1,32 +1,10 @@
-logging:
-  level:
-    root: INFO
-    org.springframework.web: INFO
-    org.springframework.security: INFO
-#    org.springframework.boot.autoconfigure: DEBUG
+> https://github.com/spring-projects/spring-security/tree/master/samples/boot/oauth2webclient
 
-#spring:
-#  thymeleaf:
-#    cache: false
-#  security:
-#    oauth2:
-#      client:
-#        registration:
-#          client-id:
-#            client-id: c455b613a6f4f08d5ea0
-#            client-secret: 1eb0303f79ee93888c646767e99ad4f745673152
-#            redirect-uri: "http://localhost:8080/login/oauth2/code/client-id"
-#            provider: github
-#            scope: read:user,public_repo
-##        provider:
-#
-#resource-uri: https://api.github.com/user/repos
-
-oauth2:
-  server:
-#    host: https://localhost:443
-    host: https://onekey-test.zhejianglab.com
-
+# Register OAuth application
+1. 联系 刘熠民 老师，在管理端配置应用，分配clientId 和 client_secret ,支持的授权方式和作用域等信息。Demo使用的是OAuth2测试用clientId.
+2. ensure callback URL is set to {host}/login/oauth2/code/{client-id}
+# Configure application.yml
+```
 spring:
   thymeleaf:
     cache: false
@@ -46,9 +24,9 @@ spring:
           maxkey:
             authorization-uri: ${oauth2.server.host}/maxkey/oauth/v20/authorize
             token-uri: ${oauth2.server.host}/maxkey/oauth/v20/token
-#            user-info-uri: ${oauth2.server.host}/maxkey/api/connect/v10/userinfo
             user-info-uri: ${oauth2.server.host}/maxkey/api/oauth/v20/me
             user-info-authentication-method: header
             user-name-attribute: realname
-
-resource-uri: http://localhost:8080/
+```
+# Boot up the application
+Launch the Spring Boot 2.0 sample and go to `http://localhost:8080/test`
